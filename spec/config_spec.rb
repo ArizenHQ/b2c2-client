@@ -4,16 +4,12 @@ describe 'Configuration' do
 
   let(:config) { B2C2Client.config }
 
-  let(:params) {{ }}
+  let(:default_params) {{ endpoint_url: 'https://b2c2.com' }}
 
-  let(:other_params)  {{ }}
-
-  let(:default_params) {{ }}
-
-  let(:overriden_params) {{  }}
+  let(:overriden_params) {{ endpoint_url: 'https://b2c2-overriden.com' }}
 
   it 'Has default parameters' do
-    application = B2C2Client::Application.new({})
+    application = B2C2Client::Application.new({endpoint_url: 'https://b2c2.com'})
 
     default_params.each do |param|
       expect(application.config.send(param.first)).to eq(param.last)

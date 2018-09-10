@@ -1,17 +1,11 @@
 module B2C2Client
   class Application
 
-    attr_reader :options
-
     def initialize(options)
-      @options = parse_options(options)
-
-      set_options
+      set_options(options)
     end
 
     def call
-
-
       self
     end
 
@@ -25,6 +19,13 @@ module B2C2Client
 
     def config
       @config ||= ::B2C2Client.config.dup
+    end
+
+    private
+
+    def set_options(options)
+      options.each { |k, v| config.send("#{k}=", v) }
+      config.set_compulsory_options
     end
   end
 end

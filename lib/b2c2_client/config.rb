@@ -24,9 +24,11 @@ module B2C2Client
 
     attr_accessor :endpoint_url
 
-
     def initialize
-      @endpoint_url = ENV.fetch('B2C2_ENDPOINT_URL')
+    end
+
+    def set_compulsory_options
+      @endpoint_url ||= ENV.fetch('B2C2_ENDPOINT_URL')
     rescue ::KeyError
       fail MissingEndpointUrl
     end
