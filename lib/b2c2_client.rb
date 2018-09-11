@@ -1,5 +1,6 @@
 require 'pry'
 require 'httparty'
+require 'active_support/inflector'
 
 ruby_project_files = Dir[File.join(File.dirname(__FILE__), '**', '*.rb')]
 

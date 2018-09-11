@@ -22,13 +22,11 @@ module B2C2Client
 
   class Configuration
 
-    attr_accessor :endpoint_url
-
-    def initialize
-    end
+    attr_accessor :endpoint_url, :api_token
 
     def set_compulsory_options
       @endpoint_url ||= ENV.fetch('B2C2_ENDPOINT_URL')
+      @api_token    ||= ENV.fetch('B2C2_API_TOKEN')
     rescue ::KeyError
       fail MissingEndpointUrl
     end

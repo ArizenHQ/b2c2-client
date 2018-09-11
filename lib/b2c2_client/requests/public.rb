@@ -1,13 +1,7 @@
 module B2C2Client
   module Requests
-    class Get < Base
-
+    class Public
       attr_reader :response
-
-      def initialize(*)
-        super
-
-      end
 
       def perform
         parsed_response

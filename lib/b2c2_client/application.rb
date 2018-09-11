@@ -5,16 +5,12 @@ module B2C2Client
       set_options(options)
     end
 
-    def call
-      self
+    def public
+      @post   ||= B2C2Client::Requests::Public.new(config)
     end
 
-    def data
-      @data   ||= B2C2Client::Requests::Get.new(config, query).perform
-    end
-
-    def query
-      @query  ||= B2C2Client::Requests::Query.new(config)
+    def private
+      @post   ||= B2C2Client::Requests::Private.new(config)
     end
 
     def config
@@ -24,7 +20,7 @@ module B2C2Client
     private
 
     def set_options(options)
-      options.each { |k, v| config.send("#{k}=", v) }
+      options.each { |key, value| config.send("#{key}=", value) }
       config.set_compulsory_options
     end
   end
