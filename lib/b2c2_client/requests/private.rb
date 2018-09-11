@@ -5,10 +5,31 @@ module B2C2Client
 
       def initialize(config)
         @config = config
+
+        initialize_endpoints_methods
       end
 
-      def request_for_quote(params)
-        Post::RequestForQuote.new(self.config, params)
+      private
+
+      # Listing every endpoints being in the post folder
+      #
+      # Returns array [Array], an array listing the endpoints
+      def possible_endpoints
+        Dir[File.join(File.dirname(__FILE__), '**', 'post/*.rb')]
+          .map{|file| file.split('/').last[0..-4]}
+          .reject{|file| file == 'base'}
+      end
+
+      # For each endpoint paths, define one method to call it
+      #
+      # Returns array [Array], an array listing the methods
+      def initialize_endpoints_methods
+        possible_endpoints.each do |endpoint_path|
+          self.class.send(:define_method, endpoint_path) do |params|
+            "B2C2Client::Requests::Post::#{endpoint_path.camelize}"
+              .constantize.new(self.config, params)
+          end
+        end
       end
     end
   end
