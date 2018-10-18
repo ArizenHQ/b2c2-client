@@ -26,7 +26,7 @@ module B2C2Client
         #
         # Returns [String] the current full endpoint path
         def url
-          config.endpoint_url + '/' + self.class.name.demodulize.underscore
+          config.endpoint_url + '/' + self.class.name.demodulize.underscore + '/'
         end
 
         private
