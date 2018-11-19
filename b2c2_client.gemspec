@@ -25,11 +25,10 @@ Gem::Specification.new do |spec|
   spec.executables   = ['b2c2_client']
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'pry', '~> 0.11.3'
-  spec.add_dependency 'httparty', '~> 0.16.2'
-  spec.add_dependency 'activesupport', '~> 5.2.0'
+  spec.add_dependency 'httparty', '~> 0.16'
+  spec.add_dependency 'activesupport', '~> 5.2'
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'webmock', '~> 3.4.1'
+  spec.add_development_dependency 'webmock', '~> 3.4'
 end
