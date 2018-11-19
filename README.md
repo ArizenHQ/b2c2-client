@@ -20,7 +20,7 @@ You can pass multiple variables that will be used in the configuration.
 ```ruby
 B2C2Client.configure do |config|
   config.endpoint_url = 'URL'
-  config.endpoint_api_token = 'URL'
+  config.api_token = 'URL'
 end
 ```
 
@@ -30,11 +30,11 @@ end
 You can also pass any of those options inline when loading an instance of B2C2Client.
 
 ```ruby
-  B2C2Client.new({endpoint_url: 'URL', endpoint_api_token})
+  B2C2Client.new({endpoint_url: 'URL', api_token: 'TOKEN'})
 ```
 
 
-You must specify the environment variable `B2C2_ENDPOINT_URL` and `ENDPOINT_API_TOKEN` or a `MissingEndpointUrl` exception will be raised:
+You must specify the environment variable `B2C2_ENDPOINT_URL` and `B2C2_API_TOKEN` or a `MissingEndpointUrl` exception will be raised:
 
 
 ## Usage
