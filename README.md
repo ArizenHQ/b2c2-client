@@ -39,10 +39,10 @@ You must specify the environment variable `B2C2_ENDPOINT_URL` and `B2C2_API_TOKE
 
 ## Usage
 
+For launch IRB and load + require automatically lib B2C2Client
+
 ```bash
-$ irb -I lib
-irb(main):001:0> require 'b2c2_client'
-=> true
+$ bundle console
 ```
 
 ```ruby
