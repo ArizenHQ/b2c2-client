@@ -42,5 +42,22 @@ describe 'B2C2Client' do
         expect(@private_client.balance(query_parameters).perform).to eq(response)
       end
     end
+
+    context 'Request for Instruments' do
+
+      let(:query_parameters)  {{}}
+
+      let(:response) {
+        [{ "name"=>"BTCUSD.CFD" }, { "name"=>"BTCUSD.SPOT" }, { "name"=>"BTCEUR.SPOT" }, { "name"=>"BTCGBP.SPOT" }, { "name"=>"ETHBTC.SPOT" }, { "name"=>"ETHUSD.SPOT" }, { "name"=>"LTCUSD.SPOT" }, { "name"=>"XRPUSD.SPOT" }, { "name"=>"BCHUSD.SPOT" }]
+      }
+
+      it 'Has the good JSON query parameters' do
+        expect(@private_client.instruments(query_parameters).parameters).to eq(query_parameters)
+      end
+
+      it 'Returns the good JSON response' do
+        expect(@private_client.instruments(query_parameters).perform).to eq(response)
+      end
+    end
   end
 end

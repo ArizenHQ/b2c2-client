@@ -42,6 +42,22 @@ RSpec.configure do |config|
                   "LTC": "0",
                   "XRP": "0",
                   "BCH": "0"}', headers: {})
+
+    stub_request(:post, "https://sandbox.b2c2.net/instruments/").
+      with(
+        headers: {
+        'Authorization'=>'Token abcd'
+        }).
+      to_return(status: 200, body:
+                '[{ "name": "BTCUSD.CFD" },
+                  { "name": "BTCUSD.SPOT" },
+                  { "name": "BTCEUR.SPOT" },
+                  { "name": "BTCGBP.SPOT" },
+                  { "name": "ETHBTC.SPOT" },
+                  { "name": "ETHUSD.SPOT" },
+                  { "name": "LTCUSD.SPOT" },
+                  { "name": "XRPUSD.SPOT" },
+                  { "name": "BCHUSD.SPOT" }]', headers: {})
   end
 
 end
