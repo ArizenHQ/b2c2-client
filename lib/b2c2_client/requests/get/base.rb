@@ -1,13 +1,13 @@
 module B2C2Client
   module Requests
-    module Post
+    module Get
       class Base < ::B2C2Client::Requests::Base
 
         private
 
         def response
           # TODO : Rescue error
-          @response = ::HTTParty.post(url,
+          @response = ::HTTParty.get(url,
                                       headers: {'Authorization': "Token #{config.api_token}"},
                                       body: parameters
                                       )

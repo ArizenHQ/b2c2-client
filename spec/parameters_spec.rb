@@ -16,7 +16,7 @@ describe 'Parameters' do
                                       }
   let(:trade_parameters)              {
                                         {
-                                          client_rfq_id: SecureRandom.uuid,
+                                          rfq_id: SecureRandom.uuid,
                                           quantity: 5,
                                           side: 'buy',
                                           instrument: 'BTCUSD.SPOT',
@@ -30,12 +30,12 @@ describe 'Parameters' do
   end
 
   it 'Has the good JSON API balance query parameters' do
-    expect(B2C2Client::Requests::Post::Balance.new(config, empty_parameters).parameters)
+    expect(B2C2Client::Requests::Get::Balance.new(config, empty_parameters).parameters)
       .to eq(empty_parameters)
   end
 
   it 'Has the good JSON API instruments query parameters' do
-    expect(B2C2Client::Requests::Post::Instruments.new(config, empty_parameters).parameters)
+    expect(B2C2Client::Requests::Get::Instruments.new(config, empty_parameters).parameters)
       .to eq(empty_parameters)
   end
 

@@ -1,6 +1,7 @@
 require 'httparty'
 require 'active_support/inflector'
-require 'b2c2_client/requests/post/base' # need to be load before all b2c2_client/requests/post/*.rb
+require 'b2c2_client/requests/base' # need to be load before all b2c2_client/requests/*/*.rb
+require 'b2c2_client/requests/get/base' # need to be load before all b2c2_client/requests/get/*.rb
 
 ruby_project_files = Dir[File.join(File.dirname(__FILE__), '**', '*.rb')]
 

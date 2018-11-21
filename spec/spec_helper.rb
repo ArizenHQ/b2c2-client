@@ -26,7 +26,7 @@ RSpec.configure do |config|
                   "price": "700.00000000",
                   "created": "2018-02-06T16:07:50.122206Z"}', headers: {})
 
-    stub_request(:post, "https://sandbox.b2c2.net/balance/").
+    stub_request(:get, "https://sandbox.b2c2.net/balance/").
       with(
         headers: {
         'Authorization'=>'Token abcd'
@@ -43,7 +43,7 @@ RSpec.configure do |config|
                   "XRP": "0",
                   "BCH": "0"}', headers: {})
 
-    stub_request(:post, "https://sandbox.b2c2.net/instruments/").
+    stub_request(:get, "https://sandbox.b2c2.net/instruments/").
       with(
         headers: {
         'Authorization'=>'Token abcd'
@@ -61,7 +61,7 @@ RSpec.configure do |config|
 
     stub_request(:post, "https://sandbox.b2c2.net/trade/").
       with(
-        body: "client_rfq_id=d779f888-d2e6-499c-92f1-d62c4c85f81b&quantity=5&side=buy&instrument=BTCUSD.SPOT&price=3999.99000000",
+        body: "rfq_id=d779f888-d2e6-499c-92f1-d62c4c85f81b&quantity=5&side=buy&instrument=BTCUSD.SPOT&price=3999.99000000",
         headers: {
         'Authorization'=>'Token abcd'
         }).

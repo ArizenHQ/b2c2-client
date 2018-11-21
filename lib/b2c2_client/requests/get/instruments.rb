@@ -1,7 +1,7 @@
 module B2C2Client
   module Requests
-    module Post
-      class Balance < Base
+    module Get
+      class Instruments < Base
       end
     end
   end
