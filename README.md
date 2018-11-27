@@ -58,6 +58,8 @@ Then simply call the method you wish to perform:
   client.request_for_quote(query_parameters).perform
 ```
 
+Where `query_paramters` are the possible parameters accepted by `B2C2`. Please visit the [docs](https://docs.b2c2.com/?python#instruments) for more info.
+
 ### List of endpoints :
 
 #### Balance [docs](https://docs.b2c2.com/#balances)
@@ -90,8 +92,6 @@ Then simply call the method you wish to perform:
   client.trade(trade).perform
 ```
 
-
-Where `query_paramters` are the possible parameters accepted by `B2C2`. Please visit the [docs](https://docs.b2c2.com/?python#instruments) for more info.
 ## Environment Variables
 
 
