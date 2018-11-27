@@ -6,7 +6,7 @@ module B2C2Client
       def initialize(config, options = {})
         @config = config
 
-        set_options(options)
+        set_options(options) if options
       end
 
       def parameters

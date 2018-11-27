@@ -34,14 +34,14 @@ module B2C2Client
       # Returns array [Array], an array listing the methods
       def initialize_endpoints_methods
         possible_post_endpoints.each do |endpoint_path|
-          self.class.send(:define_method, endpoint_path) do |params|
+          self.class.send(:define_method, endpoint_path) do |params = {}|
             "B2C2Client::Requests::Post::#{endpoint_path.camelize}"
               .constantize.new(self.config, params)
           end
         end
 
         possible_get_endpoints.each do |endpoint_path|
-          self.class.send(:define_method, endpoint_path) do |params|
+          self.class.send(:define_method, endpoint_path) do |params = {}|
             "B2C2Client::Requests::Get::#{endpoint_path.camelize}"
               .constantize.new(self.config, params)
           end

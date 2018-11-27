@@ -54,35 +54,31 @@ describe 'B2C2Client' do
 
     context 'Balance' do
 
-      let(:query_parameters)  {{}}
-
       let(:response) {
         {"USD"=>"0", "BTC"=>"0", "JPY"=>"0", "GBP"=>"0", "ETH"=>"0", "EUR"=>"0", "CAD"=>"0", "LTC"=>"0", "XRP"=>"0", "BCH"=>"0"}
       }
 
       it 'Has the good JSON query parameters' do
-        expect(@private_client.balance(query_parameters).parameters).to eq(query_parameters)
+        expect(@private_client.balance.parameters).to eq({})
       end
 
       it 'Returns the good JSON response' do
-        expect(@private_client.balance(query_parameters).perform).to eq(response)
+        expect(@private_client.balance.perform).to eq(response)
       end
     end
 
     context 'Instruments' do
-
-      let(:query_parameters)  {{}}
 
       let(:response) {
         [{ "name"=>"BTCUSD.CFD" }, { "name"=>"BTCUSD.SPOT" }, { "name"=>"BTCEUR.SPOT" }, { "name"=>"BTCGBP.SPOT" }, { "name"=>"ETHBTC.SPOT" }, { "name"=>"ETHUSD.SPOT" }, { "name"=>"LTCUSD.SPOT" }, { "name"=>"XRPUSD.SPOT" }, { "name"=>"BCHUSD.SPOT" }]
       }
 
       it 'Has the good JSON query parameters' do
-        expect(@private_client.instruments(query_parameters).parameters).to eq(query_parameters)
+        expect(@private_client.instruments.parameters).to eq({})
       end
 
       it 'Returns the good JSON response' do
-        expect(@private_client.instruments(query_parameters).perform).to eq(response)
+        expect(@private_client.instruments.perform).to eq(response)
       end
     end
 

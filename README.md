@@ -46,7 +46,8 @@ $ bundle console
 ```
 
 ```ruby
-   client = B2C2Client.new(params).private
+  params = {endpoint_url: 'your_endpoint_url', api_token: 'your_api_token'}
+  client = B2C2Client.new(params).private
 ```
 
 Where `params` is , the hash of the possible environment variables.
@@ -56,6 +57,39 @@ Then simply call the method you wish to perform:
 ```ruby
   client.request_for_quote(query_parameters).perform
 ```
+
+### List of endpoints :
+
+#### Balance [docs](https://docs.b2c2.com/#balances)
+
+```ruby
+  client.balance.perform
+```
+
+#### Instruments [docs](https://docs.b2c2.com/#instruments)
+
+```ruby
+  client.instruments.perform
+```
+
+#### Request For Quote [docs](https://docs.b2c2.com/#request-for-quote)
+
+```ruby
+  quote = {client_rfq_id: SecureRandom.uuid,quantity: 1,side: 'buy',instrument: 'BTCUSD.SPOT'}
+  response = client.request_for_quote(quote).perform
+```
+
+#### Trade [docs](https://docs.b2c2.com/#trade)
+
+```ruby
+  # for a trade you need to do a Request For Quote before tu get a rfq_id and price parameters
+  rfq_id = response["rfq_id"]
+  price = response["price"]
+
+  trade = {rfq_id: rfq_id,quantity: 1,side: 'buy',instrument: 'BTCUSD.SPOT', price: price}
+  client.trade(trade).perform
+```
+
 
 Where `query_paramters` are the possible parameters accepted by `B2C2`. Please visit the [docs](https://docs.b2c2.com/?python#instruments) for more info.
 ## Environment Variables
