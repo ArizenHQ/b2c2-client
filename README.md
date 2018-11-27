@@ -84,7 +84,7 @@ Where `query_paramters` are the possible parameters accepted by `B2C2`. Please v
 #### Trade [docs](https://docs.b2c2.com/#trade)
 
 ```ruby
-  # for a trade you need to do a Request For Quote before tu get a rfq_id and price parameters
+  # for a trade you need to do a Request For Quote before to get a rfq_id and price parameters
   rfq_id = response["rfq_id"]
   price = response["price"]
 
