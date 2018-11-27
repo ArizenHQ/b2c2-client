@@ -14,8 +14,17 @@ module B2C2Client
       # Listing every endpoints being in the post folder
       #
       # Returns array [Array], an array listing the endpoints
-      def possible_endpoints
+      def possible_post_endpoints
         Dir[File.join(File.dirname(__FILE__), '**', 'post/*.rb')]
+          .map{|file| file.split('/').last[0..-4]}
+          .reject{|file| file == 'base'}
+      end
+
+      # Listing every endpoints being in the get folder
+      #
+      # Returns array [Array], an array listing the endpoints
+      def possible_get_endpoints
+        Dir[File.join(File.dirname(__FILE__), '**', 'get/*.rb')]
           .map{|file| file.split('/').last[0..-4]}
           .reject{|file| file == 'base'}
       end
@@ -24,9 +33,16 @@ module B2C2Client
       #
       # Returns array [Array], an array listing the methods
       def initialize_endpoints_methods
-        possible_endpoints.each do |endpoint_path|
-          self.class.send(:define_method, endpoint_path) do |params|
+        possible_post_endpoints.each do |endpoint_path|
+          self.class.send(:define_method, endpoint_path) do |params = {}|
             "B2C2Client::Requests::Post::#{endpoint_path.camelize}"
+              .constantize.new(self.config, params)
+          end
+        end
+
+        possible_get_endpoints.each do |endpoint_path|
+          self.class.send(:define_method, endpoint_path) do |params = {}|
+            "B2C2Client::Requests::Get::#{endpoint_path.camelize}"
               .constantize.new(self.config, params)
           end
         end
